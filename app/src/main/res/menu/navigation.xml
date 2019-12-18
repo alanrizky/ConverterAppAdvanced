@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_length"
+        android:title="Length"
+        android:icon="@drawable/length"
+        android:state_checked="false"/>
+    <item android:id="@+id/action_digital_storage"
+        android:title="Digital Storage"
+        android:icon="@drawable/digital_storage" />
+    <item android:id="@+id/action_speed"
+        android:title="Speed"
+        android:icon="@drawable/speed" />
+
+</menu>
