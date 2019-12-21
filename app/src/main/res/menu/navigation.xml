@@ -11,5 +11,8 @@
     <item android:id="@+id/action_speed"
         android:title="Speed"
         android:icon="@drawable/speed" />
+    <item android:id="@+id/action_energy"
+        android:title="Energy"
+        android:icon="@drawable/energy" />
 
 </menu>

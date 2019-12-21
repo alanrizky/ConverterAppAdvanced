@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.alan.converter.R;
 import com.alan.converter.fragments.DigitalStorageFragment;
+import com.alan.converter.fragments.EnergyConverterFragment;
 import com.alan.converter.fragments.FragmentAbout;
 import com.alan.converter.fragments.LengthConverterFragment;
 import com.alan.converter.fragments.SpeedFragment;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements
         LengthConverterFragment.OnFragmentInteractionListener,
         DigitalStorageFragment.OnFragmentInteractionListener,
         SpeedFragment.OnFragmentInteractionListener,
+        EnergyConverterFragment.OnFragmentInteractionListener,
         BottomNavigationView.OnNavigationItemSelectedListener {
 
     private FragmentAbout fragmentAbout;
@@ -44,11 +46,24 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
+        TextView logout = findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Login.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                finish();
+            }
+        });
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, fragmentAbout)
                 .commit();
+
+
     }
 
     private boolean loadFragment(Fragment fragment) {
@@ -74,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.action_speed:
                 fragment = new SpeedFragment();
                 break;
+            case R.id.action_energy:
+                fragment = new EnergyConverterFragment();
+                break;
         }
         return loadFragment(fragment);
     }
@@ -98,5 +116,6 @@ public class MainActivity extends AppCompatActivity implements
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(launchBrowser);
     }
+
 }
 
